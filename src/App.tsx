@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import heroImage from "./assets/hero.jpg";
+import ritualImage from "./assets/ritual.jpg";
+import portraitImage from "./assets/portrait.jpg";
+import experience1 from "./assets/experience-1.jpg";
+import experience2 from "./assets/experience-2.jpg";
+import experience3 from "./assets/experience-3.jpg";
+
 const navItems = ["Home", "Experiences", "Services", "About", "Contact"];
 
 const offerings = [
   {
     icon: (
-      <svg
-        viewBox="0 0 64 64"
-        className="h-12 w-12"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.65"
-      >
+      <svg viewBox="0 0 64 64" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.65">
         <path d="M32 10c2 10-1 18-8 24-5 4-8 8-8 12 0 7 7 12 16 12s16-5 16-12c0-4-3-8-8-12-7-6-10-14-8-24Z" />
         <path d="M32 15c-3 6-3 11 0 17" />
       </svg>
@@ -23,13 +24,7 @@ const offerings = [
   },
   {
     icon: (
-      <svg
-        viewBox="0 0 64 64"
-        className="h-12 w-12"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.65"
-      >
+      <svg viewBox="0 0 64 64" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.65">
         <path d="M17 42h30" />
         <path d="M22 42V24h20v18" />
         <path d="M15 46h34" />
@@ -42,13 +37,7 @@ const offerings = [
   },
   {
     icon: (
-      <svg
-        viewBox="0 0 64 64"
-        className="h-12 w-12"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.65"
-      >
+      <svg viewBox="0 0 64 64" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.65">
         <path d="M32 12l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1 4-9Z" />
         <path d="M17 49h30" />
       </svg>
@@ -93,22 +82,19 @@ const editorialMoments = [
     title: "Rare Origins",
     description:
       "Carefully sourced teas selected for rarity, provenance, complexity, and quiet distinction.",
-    image:
-      "https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1000&q=80",
+    image: experience1,
   },
   {
     title: "Ceremonial Service",
     description:
       "Intentional presentation, refined pacing, and a hospitality language rooted in ritual.",
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80",
+    image: experience2,
   },
   {
     title: "Boutique Hospitality",
     description:
       "A tailored approach designed for luxury hotels, fine dining spaces, and private residences.",
-    image:
-      "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1000&q=80",
+    image: experience3,
   },
 ];
 
@@ -190,7 +176,7 @@ export default function App() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -205,10 +191,7 @@ export default function App() {
     <div className="site-shell">
       <section id="home" className="hero">
         <div className="hero-media">
-          <img
-            src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?auto=format&fit=crop&w=1800&q=80"
-            alt="Luxury tea service"
-          />
+          <img src={heroImage} alt="Luxury tea service" loading="eager" fetchPriority="high" />
           <div className="hero-overlay" />
           <div className="hero-grain" />
         </div>
@@ -217,7 +200,7 @@ export default function App() {
           <div className="container topbar-inner">
             <div className="brand">Tea Sommelier</div>
 
-            <nav className="nav">
+            <nav className="nav" aria-label="Primary navigation">
               {navItems.map((item) => (
                 <a key={item} href={`#${item.toLowerCase()}`}>
                   {item}
@@ -229,6 +212,8 @@ export default function App() {
               className="menu-toggle"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
             >
               <span />
               <span />
@@ -254,8 +239,7 @@ export default function App() {
             </h1>
 
             <p className="hero-subtitle">
-              Luxury tea tastings & hospitality consulting by a certified tea
-              sommelier.
+              Luxury tea tastings & hospitality consulting by a certified tea sommelier.
             </p>
 
             <div className="hero-actions">
@@ -281,13 +265,10 @@ export default function App() {
             className="editorial-copy"
           >
             <div className="section-kicker">A Curated World</div>
-            <h2>
-              An experience shaped by ritual, elegance, and a deep respect for tea.
-            </h2>
+            <h2>An experience shaped by ritual, elegance, and a deep respect for tea.</h2>
             <p>
-              Each encounter is designed with restraint and intention — balancing
-              provenance, service, atmosphere, and the understated confidence of
-              luxury hospitality.
+              Each encounter is designed with restraint and intention — balancing provenance,
+              service, atmosphere, and the understated confidence of luxury hospitality.
             </p>
           </motion.div>
 
@@ -301,8 +282,8 @@ export default function App() {
             <span className="editorial-stat-number">Bespoke</span>
             <span className="editorial-stat-line" />
             <p>
-              Every tasting, menu, and hospitality format is tailored to the
-              destination, guest profile, and emotional tone of the occasion.
+              Every tasting, menu, and hospitality format is tailored to the destination, guest
+              profile, and emotional tone of the occasion.
             </p>
           </motion.div>
         </div>
@@ -351,7 +332,7 @@ export default function App() {
                 }}
               >
                 <div className="moment-image">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.image} alt={item.title} loading="lazy" />
                   <div className="moment-image-overlay" />
                 </div>
                 <div className="moment-body">
@@ -396,10 +377,7 @@ export default function App() {
 
       <section className="immersive-banner">
         <div className="immersive-media">
-          <img
-            src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=1800&q=80"
-            alt="Tea ritual"
-          />
+          <img src={ritualImage} alt="Tea ritual" loading="lazy" />
           <div className="immersive-overlay" />
           <div className="immersive-grain" />
         </div>
@@ -414,10 +392,7 @@ export default function App() {
           >
             <h2>The Art & Ritual of Tea</h2>
             <span className="immersive-line" />
-            <p>
-              Crafting unforgettable moments through the world of rare and
-              exceptional teas.
-            </p>
+            <p>Crafting unforgettable moments through the world of rare and exceptional teas.</p>
           </motion.div>
         </div>
       </section>
@@ -456,10 +431,7 @@ export default function App() {
             className="profile-card"
           >
             <div className="profile-image">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=80"
-                alt="Tea sommelier portrait"
-              />
+              <img src={portraitImage} alt="Tea sommelier portrait" loading="lazy" />
             </div>
 
             <div className="profile-copy">
@@ -467,9 +439,9 @@ export default function App() {
               <h3>Meet Your Tea Sommelier</h3>
               <span className="profile-line" />
               <p>
-                Dedicated to the art of tea, with a passion for creating refined
-                and memorable tea experiences for private clients, luxury
-                hospitality settings, and exceptional events.
+                Dedicated to the art of tea, with a passion for creating refined and memorable tea
+                experiences for private clients, luxury hospitality settings, and exceptional
+                events.
               </p>
 
               <a href="#contact" className="btn-dark">
@@ -492,8 +464,8 @@ export default function App() {
             <div className="section-kicker">Inquiries & Bookings</div>
             <h2>Begin a private tea experience shaped around your guests and setting.</h2>
             <p>
-              For private tastings, hospitality consulting, luxury events, and
-              bespoke tea programs, please get in touch to discuss your vision.
+              For private tastings, hospitality consulting, luxury events, and bespoke tea
+              programs, please get in touch to discuss your vision.
             </p>
 
             <div className="contact-list">
@@ -522,8 +494,7 @@ export default function App() {
             <div className="contact-card-kicker">Book an Inquiry</div>
             <h3>Let's create something memorable.</h3>
             <p>
-              Share a few details and begin the conversation for a tailored tea
-              experience.
+              Share a few details and begin the conversation for a tailored tea experience.
             </p>
 
             <a href="mailto:info@teasommelier.com" className="btn-dark">
@@ -541,7 +512,9 @@ export default function App() {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="section-kicker section-kicker-light">Quiet Luxury, Thoughtfully Served</div>
+            <div className="section-kicker section-kicker-light">
+              Quiet Luxury, Thoughtfully Served
+            </div>
             <h2>For spaces where service is remembered long after the final cup.</h2>
             <a href="mailto:info@teasommelier.com" className="btn-primary">
               Arrange a Consultation

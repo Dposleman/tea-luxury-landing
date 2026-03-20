@@ -1166,3 +1166,26 @@ button {
     text-align: center;
   }
 }
+img {
+  image-rendering: auto;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(183, 150, 99, 0.9);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
