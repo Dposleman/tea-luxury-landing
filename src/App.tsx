@@ -88,6 +88,30 @@ const process = [
   },
 ];
 
+const editorialMoments = [
+  {
+    title: "Rare Origins",
+    description:
+      "Carefully sourced teas selected for rarity, provenance, complexity, and quiet distinction.",
+    image:
+      "https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1000&q=80",
+  },
+  {
+    title: "Ceremonial Service",
+    description:
+      "Intentional presentation, refined pacing, and a hospitality language rooted in ritual.",
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80",
+  },
+  {
+    title: "Boutique Hospitality",
+    description:
+      "A tailored approach designed for luxury hotels, fine dining spaces, and private residences.",
+    image:
+      "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1000&q=80",
+  },
+];
+
 function SectionDivider({ title }: { title: string }) {
   return (
     <div className="section-divider">
@@ -247,6 +271,43 @@ export default function App() {
         </div>
       </section>
 
+      <section className="editorial-intro">
+        <div className="container editorial-intro-grid">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="editorial-copy"
+          >
+            <div className="section-kicker">A Curated World</div>
+            <h2>
+              An experience shaped by ritual, elegance, and a deep respect for tea.
+            </h2>
+            <p>
+              Each encounter is designed with restraint and intention — balancing
+              provenance, service, atmosphere, and the understated confidence of
+              luxury hospitality.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="editorial-stat"
+          >
+            <span className="editorial-stat-number">Bespoke</span>
+            <span className="editorial-stat-line" />
+            <p>
+              Every tasting, menu, and hospitality format is tailored to the
+              destination, guest profile, and emotional tone of the occasion.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <section id="services" className="offer-strip">
         <div className="container offer-grid">
           {offerings.map((item, index) => (
@@ -268,6 +329,39 @@ export default function App() {
               <p>{item.description}</p>
             </motion.article>
           ))}
+        </div>
+      </section>
+
+      <section id="experiences" className="moments-section">
+        <div className="container">
+          <SectionDivider title="Signature Experiences" />
+
+          <div className="moments-grid">
+            {editorialMoments.map((item, index) => (
+              <motion.article
+                key={item.title}
+                className="moment-card"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.22 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                <div className="moment-image">
+                  <img src={item.image} alt={item.title} />
+                  <div className="moment-image-overlay" />
+                </div>
+                <div className="moment-body">
+                  <h3>{item.title}</h3>
+                  <span className="moment-line" />
+                  <p>{item.description}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -386,7 +480,77 @@ export default function App() {
         </div>
       </section>
 
-      <footer id="contact" className="footer">
+      <section id="contact" className="contact-section">
+        <div className="container contact-grid">
+          <motion.div
+            className="contact-copy"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="section-kicker">Inquiries & Bookings</div>
+            <h2>Begin a private tea experience shaped around your guests and setting.</h2>
+            <p>
+              For private tastings, hospitality consulting, luxury events, and
+              bespoke tea programs, please get in touch to discuss your vision.
+            </p>
+
+            <div className="contact-list">
+              <div>
+                <span>Email</span>
+                <strong>info@teasommelier.com</strong>
+              </div>
+              <div>
+                <span>Location</span>
+                <strong>Copenhagen, Denmark</strong>
+              </div>
+              <div>
+                <span>Availability</span>
+                <strong>Private clients, hotels, restaurants, special events</strong>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="contact-card"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="contact-card-kicker">Book an Inquiry</div>
+            <h3>Let's create something memorable.</h3>
+            <p>
+              Share a few details and begin the conversation for a tailored tea
+              experience.
+            </p>
+
+            <a href="mailto:info@teasommelier.com" className="btn-dark">
+              Email to Inquire
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="closing-cta">
+        <div className="container closing-cta-inner">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="section-kicker section-kicker-light">Quiet Luxury, Thoughtfully Served</div>
+            <h2>For spaces where service is remembered long after the final cup.</h2>
+            <a href="mailto:info@teasommelier.com" className="btn-primary">
+              Arrange a Consultation
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      <footer className="footer">
         <div className="container footer-inner">
           <div>info@teasommelier.com</div>
           <div className="footer-socials">
