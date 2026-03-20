@@ -2,20 +2,13 @@
 
 :root {
   --bg: #f4efe7;
-  --paper: #f8f3ec;
-  --paper-2: #f6f1e9;
-  --paper-3: #f9f5ee;
-  --paper-4: #efe7db;
   --text: #40372f;
-  --muted: #6c6157;
   --line: #d9cfc2;
   --gold: #b79663;
   --olive: #3f4a37;
-  --olive-2: #475240;
   --hero-text: #f5eee3;
   --hero-subtle: #eadfce;
   --shadow-soft: 0 18px 50px rgba(53, 43, 33, 0.08);
-  --shadow-medium: 0 20px 60px rgba(48, 39, 30, 0.12);
   --shadow-button: 0 10px 30px rgba(0, 0, 0, 0.16);
   --container: 1400px;
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
@@ -364,6 +357,7 @@ button:focus-visible {
 }
 
 .moment-image {
+  position: relative;
   height: 340px;
   overflow: hidden;
 }

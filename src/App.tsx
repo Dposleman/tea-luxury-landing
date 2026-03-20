@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import heroImage from "./assets/hero.jpg";
-import ritualImage from "./assets/ritual.jpg";
-import portraitImage from "./assets/portrait.jpg";
-import experience1 from "./assets/experience-1.jpg";
-import experience2 from "./assets/experience-2.jpg";
-import experience3 from "./assets/experience-3.jpg";
+const heroImage =
+  "https://images.unsplash.com/photo-1507915135761-41a0a222c709?auto=format&fit=crop&w=1800&q=80";
+
+const ritualImage =
+  "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=1800&q=80";
+
+const portraitImage =
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=80";
+
+const experience1 =
+  "https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1000&q=80";
+
+const experience2 =
+  "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80";
+
+const experience3 =
+  "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1000&q=80";
 
 const navItems = ["Home", "Experiences", "Services", "About", "Contact"];
 
